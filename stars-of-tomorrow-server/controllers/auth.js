@@ -1,5 +1,4 @@
 import bcrypt from "bcrypt";
-import { Jwt } from "jsonwebtoken";
 import Scout from "../models/Scout.js";
 
 /*  REGISTER USER */
