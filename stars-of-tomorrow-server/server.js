@@ -8,6 +8,13 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
+import authRoutes from "./routes/auth.js";
+import eventRoutes from "./Routes/events";
+import scoutRoutes from "./Routes/scouts";
+import { register } from "./controllers/auth.js";
+import { verifyToken } from "./middleware/auth.js";
+import Events from "./models/Event.js";
+import Scouts from "./models/Scout.js";
 
 /* CONFIGURATIONS */
 const __filename = fileURLToPath(import.meta.url);
@@ -36,6 +43,10 @@ const upload = multer({ storage });
 
 /* ROUTES WITH FILES */
 app.post("auth/event", upload.array("events"));
+
+/* ROUTES */
+app.use("/auth", authRoutes);
+app.use("/scouts", scoutRoutes);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;

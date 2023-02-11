@@ -23,7 +23,13 @@ const ScoutSchema = new mongoose.Schema(
     password: {
       type: String,
       require: true,
-      min: 2,
+      min: 5,
+      max: 50,
+    },
+    confirmPassword: {
+      type: String,
+      require: true,
+      min: 5,
       max: 50,
     },
     scoutId: {

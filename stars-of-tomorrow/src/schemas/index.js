@@ -18,10 +18,10 @@ export const registerSchema = yup.object().shape({
     .string()
     .oneOf([yup.ref("password"), null, "Passwords must match"])
     .required("required"),
-  scoutid: yup.string().required("required"),
+  scoutId: yup.string().required("required"),
 });
 
-export const LoginSchema = yup.object().shape({
-  scoutid: yup.string().scoutid("invalid ScoutId").required("required"),
+export const loginSchema = yup.object().shape({
+  scoutId: yup.string().required("required"),
   password: yup.string().required("required"),
 });
