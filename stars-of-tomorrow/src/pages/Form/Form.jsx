@@ -86,8 +86,7 @@ const Form = () => {
         touched,
         handleSubmit,
         handleBlur,
-        handleChange,
-        setFieldValue, 
+        handleChange, 
         resetForm,
       }) => (
         <form onSubmit={handleSubmit}>
@@ -137,42 +136,6 @@ const Form = () => {
               helperText={touched.email && errors.email}
               sx={{ gridColumn: "span 4" }}
               />
-              <TextField 
-              label="Scout Id"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.scoutId}
-              name="scoutId"
-              error={
-                Boolean(touched.scoutId) && Boolean(errors.scoutId)
-              }
-              helperText={touched.scoutId && errors.scoutId}
-              sx={{ gridColumn: "span 4" }}
-              />
-              <TextField 
-              label="Password"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.password}
-              name="password"
-              error={
-                Boolean(touched.password) && Boolean(errors.password)
-              }
-              helperText={touched.password && errors.password}
-              sx={{ gridColumn: "span 4" }}
-              />
-              <TextField 
-              label="Confirm Password"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.confirmPassword}
-              name="confirmPassword"
-              error={
-                Boolean(touched.confirmPassword) && Boolean(errors.confirmPassword)
-              }
-              helperText={touched.confirmPassword && errors.confirmPassword}
-              sx={{ gridColumn: "span 4" }}
-              />
               </>
             )}
 
@@ -207,9 +170,9 @@ const Form = () => {
               sx={{
                 m: "2rem 0",
                 p: "1rem",
-                backgroundColor: palette.primary.main,
+                backgroundColor: palette.background.button,
                 color: palette.background.alt,
-                "&:hover": { color: palette.primary.main },
+                "&:hover": { backgroundColor: palette.primary.light },
               }}
             >
               {isLogin ? "LOGIN" : "REGISTER "}

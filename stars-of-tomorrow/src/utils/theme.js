@@ -1,31 +1,31 @@
 // color design tokens export
 export const colorTokens = {
   grey: {
-    0: "#FFFFFF",
-    10: "#F6F6F6",
-    50: "#F0F0F0",
-    100: "#E0E0E0",
-    200: "#C2C2C2",
-    300: "#A3A3A3",
-    400: "#858585",
-    500: "#666666",
-    600: "#4D4D4D",
-    700: "#333333",
-    800: "#1A1A1A",
-    900: "#0A0A0A",
-    1000: "#000000",
+    0: "#FFFFFF", // White
+    10: "#F6F6F6", // Snow White
+    50: "#F0F0F0", // Flash White
+    100: "#E0E0E0", // Chinese White
+    200: "#C2C2C2", // Silver Sand Grey
+    300: "#A3A3A3", // Quick Silver
+    400: "#858585", // Old Silver
+    500: "#666666", // Granite Grey
+    600: "#4D4D4D", // Dark Liver Grey
+    700: "#333333", // Dark Charcoal
+    800: "#1A1A1A", // Eerie Black
+    900: "#0A0A0A", // Vampire Black
+    1000: "#000000", // Black
   },
   primary: {
-    50: "#E6FBFF",
-    100: "#CCF7FE",
-    200: "#99EEFD",
-    300: "#66E6FC",
-    400: "#33DDFB",
-    500: "#00D5FA",
-    600: "#00A0BC",
-    700: "#006B7D",
-    800: "#00353F",
-    900: "#001519",
+    50: "#E6FBFF", //Light White Blue
+    100: "#CCF7FE", // Mint Blue
+    200: "#99EEFD", // Light Blue
+    300: "#66E6FC", // Blue
+    400: "#33DDFB", // Ocean Blue
+    500: "#f2cd00", // Stars Yellow
+    600: "#00A0BC", // Dark Blue
+    700: "#006B7D", // Deep Blue
+    800: "#00353F", // Navy
+    900: "#001519", // Black Blue
   },
 };
 
@@ -59,7 +59,7 @@ export const themeSettings = (mode) => {
             primary: {
               dark: colorTokens.primary[700],
               main: colorTokens.primary[500],
-              light: colorTokens.primary[50],
+              light: colorTokens.grey[1000],
             },
             neutral: {
               dark: colorTokens.grey[700],
@@ -69,8 +69,9 @@ export const themeSettings = (mode) => {
               light: colorTokens.grey[50],
             },
             background: {
-              default: colorTokens.grey[10],
+              default: colorTokens.grey[900],
               alt: colorTokens.grey[0],
+              button: colorTokens.primary[500],
             },
           }),
     },
