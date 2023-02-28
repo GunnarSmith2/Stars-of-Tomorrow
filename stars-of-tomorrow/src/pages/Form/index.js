@@ -24,7 +24,7 @@ const FormPage = () => {
         backgroundColor={theme.palette.background.alt}
         textAlign="center"
       >
-        <Typography sx={{ mb: "1rem" }}>
+        <Typography variant="h5" sx={{ mb: "1rem" }}>
           Welcome to Stars of Tomorrow, Lets Scout!
         </Typography>
         <Form />
