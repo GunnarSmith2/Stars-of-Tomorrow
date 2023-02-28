@@ -69,9 +69,9 @@ function DrawerAppBar(props) {
                 <img src={ST} alt="StarsOfTomorrow" />
               </div>
           </div>
-          <Box sx={{ display: { xs: 'flex' }, flexDirection:'row', ml:{xs: 1, sm:2} }}>
+          <Box sx={{ display: { xs: 'flex' }, flexDirection:'row', ml:{xs: 1, sm:2}}}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#000', fontFamily: 'Oswald, sans-serif',fontWeight:300}}>
+              <Button key={item} sx={{ px: {md: 4},  color: '#000', fontFamily: 'Oswald, sans-serif', fontWeight:300, fontSize: 14 }}>
                 {item}
               </Button>
             ))}
