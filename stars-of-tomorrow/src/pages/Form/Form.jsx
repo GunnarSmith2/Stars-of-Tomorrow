@@ -5,8 +5,25 @@ import { useDispatch } from "react-redux"
 import { setLogin } from '../../state';
 import { loginSchema } from '../../schemas/index.js';
 import { registerSchema } from '../../schemas/index.js';
-import { Box, Button, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button, TextField, Typography, useMediaQuery, useTheme, createTheme, ThemeProvider } from "@mui/material";
 
+const theme = createTheme({
+  palette: {
+    // main green
+    primary: {
+      main: '#f2cd00'
+    }
+  },
+  components: {
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          fontFamily: 'Oswald, sans-serif',
+        },
+      },
+    },
+  },
+});
 
 const initialValuesRegister = {
   firstName: "",
@@ -75,6 +92,7 @@ const Form = () => {
   };
 
   return (
+    <ThemeProvider theme={theme}>
     <Formik
       onSubmit={handleFormSubmit}
       initialValues={isLogin ? initialValuesLogin : initialValuesRegister}
@@ -91,6 +109,7 @@ const Form = () => {
       }) => (
         <form onSubmit={handleSubmit}>
           <Box
+            paddingTop= '2rem'
             display="grid"
             gap="30px"
             gridTemplateColumns="repeat(4, minmax(0, 1fr))"
@@ -110,7 +129,7 @@ const Form = () => {
                 Boolean(touched.firstName) && Boolean(errors.firstName)
               }
               helperText={touched.firstName && errors.firstName}
-              sx={{ gridColumn: "span 2" }}
+              sx={{ gridColumn: "span 2", fontFamily: 'Oswald, sans-serif', }}
               />
               <TextField 
               label="Last Name"
@@ -168,11 +187,12 @@ const Form = () => {
               fullWidth
               type="submit"
               sx={{
+                fontFamily: 'Oswald, sans-serif',
                 m: "2rem 0",
                 p: "1rem",
-                backgroundColor: palette.background.button,
-                color: palette.background.alt,
-                "&:hover": { backgroundColor: palette.primary.light },
+                backgroundColor: 'black',
+                color: 'white',
+                "&:hover": {color: 'black', backgroundColor: '#f2cd00' },
               }}
             >
               {isLogin ? "LOGIN" : "REGISTER "}
@@ -183,11 +203,12 @@ const Form = () => {
                 resetForm();
               }}
               sx={{
-                textDecoration: "underline",
-                color: palette.primary.main,
+                fontFamily: 'Oswald, sans-serif',
+                textDecoration: "none",
+                color: 'black',
                 "&:hover": {
                   cursor: "pointer",
-                  color: palette.primary.light,
+                  color: 'black',
                 },
               }}
             >
@@ -199,6 +220,7 @@ const Form = () => {
         </form>
       )} 
     </Formik>
+    </ThemeProvider>
   );
 };
 

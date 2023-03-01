@@ -78,7 +78,7 @@ const Event = () => {
           justifyContent='center'
           variant='h4' 
           style={{background: "-webkit-linear-gradient(45deg, #f2cd00 30%, #ffffff 90%)",
-          webkitBackgroundClip: "text",
+          WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",}} 
           sx={{ letterSpacing: '.5px', fontFamily: 'Oswald, sans-serif', fontWeight:500,}} 
           marginTop={5}
