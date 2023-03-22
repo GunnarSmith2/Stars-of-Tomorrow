@@ -7,7 +7,7 @@ import { themeSettings } from "./utils/theme.js";
 import "./app.css";
 
 // Importing Pages
-import { LoginPage, Events } from "./pages";
+import { LoginPage, Events, Rosters } from "./pages";
 
 // Import Routes
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -23,6 +23,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route path="/Events" element={<Events />} />
+          <Route path="/Rosters" element={<Rosters />} />
         </Routes>
       </BrowserRouter>
     </div>
