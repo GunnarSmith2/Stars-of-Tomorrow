@@ -28,7 +28,7 @@ import './navbar.css'
 const drawerWidth = 240;
 const navItems = ['Events', 'Alliance', 'Settings'];
 
-function DrawerAppBar(props) {
+function DrawerAppBarTemp(props) {
   const mode = useSelector((state) => state.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
   const { window } = props;
@@ -69,13 +69,13 @@ function DrawerAppBar(props) {
                 <img src={ST} alt="StarsOfTomorrow" />
               </div>
           </div>
-          <Box sx={{ display: { xs: 'flex' }, flexDirection:'row', ml:{xs: 1, sm:2}}}>
+          {/*<Box sx={{ display: { xs: 'flex' }, flexDirection:'row', ml:{xs: 1, sm:2}}}>
             {navItems.map((item) => (
               <Button key={item} sx={{ px: {md: 4},  color: '#000', fontFamily: 'Oswald, sans-serif', fontWeight:300, fontSize: 14 }}>
                 {item}
               </Button>
             ))}
-          </Box>
+            </Box>*/}
           <div className='navbar-links_container1'>
               <div className='navbar-links_logo-2'>
                 <img src={AL} alt="The-Alliance" />
@@ -106,7 +106,7 @@ function DrawerAppBar(props) {
   );
 }
 
-DrawerAppBar.propTypes = {
+DrawerAppBarTemp.propTypes = {
   /**
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
@@ -114,4 +114,4 @@ DrawerAppBar.propTypes = {
   window: PropTypes.func,
 };
 
-export default DrawerAppBar;
+export default DrawerAppBarTemp;

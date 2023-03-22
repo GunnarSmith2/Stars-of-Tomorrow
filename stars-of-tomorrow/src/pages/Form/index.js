@@ -1,11 +1,15 @@
 import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
 import Form from "./Form";
+import NavBarTemp from "../../components/NavBar/NavBarTemp";
 
 const FormPage = () => {
   const theme = useTheme();
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
   return (
     <>
+      <Box>
+        <NavBarTemp />
+      </Box>
       {/* <Box
         width="100%"
         backgroundColor={theme.palette.background.alt}

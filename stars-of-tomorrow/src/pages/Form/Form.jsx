@@ -7,6 +7,7 @@ import { loginSchema } from '../../schemas/index.js';
 import { registerSchema } from '../../schemas/index.js';
 import { Box, Button, TextField, Typography, useMediaQuery, useTheme, createTheme, ThemeProvider } from "@mui/material";
 
+
 const theme = createTheme({
   palette: {
     // main green

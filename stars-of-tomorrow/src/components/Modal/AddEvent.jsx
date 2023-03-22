@@ -28,6 +28,15 @@ const theme = createTheme({
     primary: {
       main: '#000000',
     }
+  },
+  components: {
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          fontFamily: 'Oswald, sans-serif',
+        },
+      },
+    },
   }, 
 });
 
@@ -60,9 +69,8 @@ export default function FormDialog() {
     <div>
       <ThemeProvider theme={theme}>
       <Button variant='contained' size='small' sx={{ marginTop: -7 , marginRight: 4 }} style={{background: "black",
-          webkitBackgroundClip: "text",
-          WebkitTextFillColor: "#f2cd00",}}  onClick={handleClickOpen}>
-        <AiOutlinePlusCircle color='#f2cd00' /> <Typography fontFamily= 'Oswald, sans-serif' fontSize={14} marginLeft={.5}>EVENT</Typography> 
+          Color: "#f2cd00",}}  onClick={handleClickOpen}>
+        <AiOutlinePlusCircle color='white' /> <Typography fontFamily= 'Oswald, sans-serif' fontSize={14} marginLeft={.5}>EVENT</Typography> 
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle sx={{
@@ -198,8 +206,8 @@ export default function FormDialog() {
           </form>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Create Event</Button>
+          <Button style={{ fontFamily: 'Oswald, sans-serif'}} onClick={handleClose}>Cancel</Button>
+          <Button style={{ fontFamily: 'Oswald, sans-serif'}} onClick={handleClose}>Create Event</Button>
         </DialogActions>
       </Dialog>
       </ThemeProvider>
