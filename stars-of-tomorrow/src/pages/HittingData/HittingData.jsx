@@ -1,4 +1,4 @@
-import { Typography, Box, Stack, Button, Grid, Container, TextField, Paper } from '@mui/material';
+import { Typography, Box, Stack, Button, Grid, Container, TextField, Paper, Divider } from '@mui/material';
 import Navbar from '../../components/NavBar/Navbar'
 
 import { useState } from 'react';
@@ -135,14 +135,16 @@ const HittingData = () => {
         name: 'Allee Hitter',
         class: '2023',
         number: '22',
-        position: 'CF',
+        primaryPosition: 'CF',
+        secondaryPosition: 'SS',
+        pitches: 'N/A',
         bats: 'Right'
     };
 
 
     return (
         <Container>
-            <Box display='flex' aligndivs='center' justifyContent='center'>
+            <Box display='flex' aligndivs='center' justifyContent='center' borderBottom={2} borderColor='yellow' mb={1}>
                 <Typography
                     justifyContent='center'
                     variant='h4'
@@ -153,41 +155,38 @@ const HittingData = () => {
                     }}
                     sx={{ letterSpacing: '.5px', fontFamily: 'Oswald, sans-serif', fontWeight: 500, }}
                     marginTop={5}
-                    marginBottom={4}
+                    marginBottom={2}
                     textAlign='center'
                 >
                     Hitting
                 </Typography>
             </Box>
-
             <Box display='flex' justifyContent='center'>
-            <Paper sx={{ width: '500px', px: '10px', py: '10px' }} style={{ background: "-webkit-linear-gradient(45deg, #000 30%, #60696b 90%)",}}>
             <Grid container spacing={2} display='flex' sx={{marginTop: '.2rem'}}>
-                <Grid item xs={6}>
+                <Grid item xs={12}>
                     <Typography
                         display='flex'
-                        justifyContent='flex-end'
+                        justifyContent='center'
                         variant='h5'
                         sx={{
                             color: 'white',
                             fontFamily: 'Oswald, sans-serif',
                             letterSpacing: '.5px',
-                            fontWeight: 300,
-                            marginRight: '1.5rem'
+                            fontWeight:'300',
                         }}
                     >
-                        Player: {exAthlete.name}
+                       Camp Player: {exAthlete.name}
                     </Typography>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={6} alignItems='center'>
                     <Typography
                         variant='h5'
+                        textAlign='end'
                         sx={{
                             color: 'white',
                             fontFamily: 'Oswald, sans-serif',
                             letterSpacing: '.5px',
                             fontWeight: 300,
-                            marginLeft: '2rem'
                         }}
                     >
                         Camp Number: {exAthlete.number}
@@ -196,54 +195,85 @@ const HittingData = () => {
                 <Grid item xs={6}>
                     <Typography
                         display='flex'
-                        justifyContent='center'
+                        textAlign='start'
                         variant='h5'
                         sx={{
                             color: 'white',
                             fontFamily: 'Oswald, sans-serif',
                             letterSpacing: '.5px',
                             fontWeight: 300,
-                            marginRight: '2rem'
+                            marginRight: '.5rem'
                         }}
                     >
-                        Position: {exAthlete.position}
+                        Grad Class: {exAthlete.class}
                     </Typography>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={3}>
+                    <Typography
+                        display='flex'
+                        variant='h6'
+                        sx={{
+                            color: 'white',
+                            fontFamily: 'Oswald, sans-serif',
+                            fontSize:'18px',
+                            letterSpacing: '.5px',
+                            fontWeight: 300,
+                            marginLeft: '.5rem'
+                        }}
+                    >
+                        Primary Position: {exAthlete.primaryPosition}
+                    </Typography>
+                </Grid>
+                <Grid item xs={3}>
+                    <Typography
+                        display='flex'
+                        textAlign='center'
+                        variant='h6'
+                        sx={{
+                            color: 'white',
+                            fontFamily: 'Oswald, sans-serif',
+                            letterSpacing: '.5px',
+                            fontSize:'18px',
+                            fontWeight: 300,
+                            marginLeft: '3rem'
+                        }}
+                    >
+                        Pitches: {exAthlete.pitches}
+                    </Typography>
+                </Grid>
+                <Grid item xs={3}>
                     <Typography
                         display='flex'
                         justifyContent='center'
-                        variant='h5'
+                        variant='h6'
                         sx={{
                             color: 'white',
                             fontFamily: 'Oswald, sans-serif',
                             letterSpacing: '.5px',
+                            fontSize:'18px',
                             fontWeight: 300,
-                            marginRight: '4.5rem'
-                        }}
-                    >
-                        Class: {exAthlete.class}
-                    </Typography>
-                </Grid>
-                <Grid item xs={4}>
-                    <Typography
-                        display='flex'
-                        justifyContent='center'
-                        variant='h5'
-                        sx={{
-                            color: 'white',
-                            fontFamily: 'Oswald, sans-serif',
-                            letterSpacing: '.5px',
-                            fontWeight: 300,
-                            marginLeft: '2.7rem',
-                            marginBottom: '1rem'
                         }}
                     >
                         Bats: {exAthlete.bats}
                     </Typography>
                 </Grid>
+                <Grid item xs={3}>
+                    <Typography
+                        display='flex'
+                        variant='h6'
+                        sx={{
+                            color: 'white',
+                            fontFamily: 'Oswald, sans-serif',
+                            fontSize:'18px',
+                            letterSpacing: '.5px',
+                            fontWeight: 300,
+                            marginLeft: '.5rem'
+                        }}
+                    >
+                        Secondary Position: {exAthlete.secondaryPosition}
+                    </Typography>
+                </Grid>
             </Grid>
-            </Paper>
             </Box>
 
             <Box display='flex' alignItems='center' justifyContent='space-between' sx={{ marginTop: '3rem'}}>
@@ -275,9 +305,9 @@ const HittingData = () => {
             <Grid container>
             <Grid item xs={12}>
             <Box display='flex' aligndivs='center' marginBottom='2rem'>
-                <Paper style={{ background: "-webkit-linear-gradient(45deg, #000 30%, #60696b 90%)",}}>
                 <Grid container spacing={2} justifyContent={'center'} paddingX='1rem' paddingY='1rem' >
                     <Grid item xs={9}>
+                    <Paper sx={{p: 1}} style={{ background: "-webkit-linear-gradient(45deg, #000 30%, #60696b 90%)",}}>
                     <Typography
                         variant='h5'
 
@@ -290,6 +320,7 @@ const HittingData = () => {
                     >
                         Hitting:
                     </Typography>
+                    </Paper>
                     </Grid>
                     <Grid item xs={3}>
                     <Grid container justifyContent={'center'}>
@@ -313,6 +344,7 @@ const HittingData = () => {
 
                 </Grid>
                 <Grid item xs={9}>
+                    <Paper sx={{p: 1}} style={{ background: "-webkit-linear-gradient(45deg, #000 30%, #60696b 90%)",}}>
                     <Typography
                         variant='h5'
 
@@ -325,6 +357,7 @@ const HittingData = () => {
                     >
                         Swing Operation:
                     </Typography>
+                    </Paper>
                 </Grid>
                 <Grid item xs={3}>
                     <Grid container justifyContent={'center'}>
@@ -348,6 +381,7 @@ const HittingData = () => {
 
                 </Grid>
                 <Grid item xs={9}>
+                    <Paper sx={{p: 1}} style={{ background: "-webkit-linear-gradient(45deg, #000 30%, #60696b 90%)",}}>
                     <Typography
                         variant='h5'
 
@@ -360,6 +394,7 @@ const HittingData = () => {
                     >
                         Power:
                     </Typography>
+                    </Paper>
                 </Grid>
                 <Grid item xs={3}>
                     <Grid container justifyContent={'center'}>
@@ -383,6 +418,7 @@ const HittingData = () => {
 
                 </Grid>
                 <Grid item xs={9}>
+                    <Paper sx={{p: 1}} style={{ background: "-webkit-linear-gradient(45deg, #000 30%, #60696b 90%)",}}>
                     <Typography
                         variant='h5'
 
@@ -395,6 +431,7 @@ const HittingData = () => {
                     >
                         Swing Path:
                     </Typography>
+                    </Paper>
                 </Grid>
                 <Grid item xs={3}>
                     <Grid container justifyContent={'center'}>
@@ -418,6 +455,7 @@ const HittingData = () => {
 
                 </Grid>
                 <Grid item xs={9}>
+                    <Paper sx={{p: 1}} style={{ background: "-webkit-linear-gradient(45deg, #000 30%, #60696b 90%)",}}>
                     <Typography
                         variant='h5'
 
@@ -430,6 +468,7 @@ const HittingData = () => {
                     >
                         Barrel Contact:
                     </Typography>
+                    </Paper>
                 </Grid>
                 <Grid item xs={3}>
                     <Grid container justifyContent={'center'}>
@@ -453,7 +492,6 @@ const HittingData = () => {
 
                 </Grid>
                 </Grid>
-                </Paper>
             </Box>
             </Grid>
             </Grid>

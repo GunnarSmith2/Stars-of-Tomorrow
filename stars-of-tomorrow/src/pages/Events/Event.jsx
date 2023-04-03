@@ -116,7 +116,7 @@ const Event = () => {
         <div className=''>
           {showLiveCamps ? (
             <>
-            <Box display='flex' justifyContent={{xs: 'center', md: 'flex-start'}} flexWrap='wrap'  marginTop={1}>
+            <Box display='flex' justifyContent={{xs: 'flex-start', md: 'flex-start'}} flexWrap='wrap'  marginTop={1}>
               {lives.map((live) => {
                 return(
                   <Events
@@ -166,7 +166,7 @@ const Event = () => {
       <div className=''>
           {showCamps ? (
             <>
-            <Box display='flex' justifyContent={{xs: 'center', md: 'flex-start'}} flexWrap='wrap'  marginTop={2}>
+            <Box display='flex' justifyContent={{xs: 'flex-start', md: 'flex-start'}} flexWrap='wrap'  marginTop={2}>
               {camps.map((camp) => {
                 return(
                   <Events

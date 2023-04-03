@@ -12,7 +12,7 @@ function Events(props) {
       sx={{
         display: "flex",
         justifyContent: "space-evenly",
-        mx: 4,
+        mx: 2.5,
         marginBottom: 4,
         maxWidth: 213,
         minWidth: 213,
