@@ -1,7 +1,11 @@
-import { Typography, Box, Stack, Button, Grid, Container, TextField, Paper, Divider } from '@mui/material';
+import { Typography, Box, Stack, Button, Grid, Container, TextField, Paper, Divider, Popover, ToggleButton, ToggleButtonGroup, createTheme} from '@mui/material';
 import Navbar from '../../components/NavBar/Navbar'
+import React, { useState } from 'react';
 
-import { useState } from 'react';
+
+const Power = ['Pull', 'Middle', 'Opposite', 'Line to Line'];
+const Barrel = ['Pull', 'Middle', 'Opposite', 'Line to Line'];
+const SwingPath = ['Pull', 'Middle', 'Opposite', 'Line to Line'];
 
 
 const HittingData = () => {
@@ -30,6 +34,105 @@ const HittingData = () => {
     const [swingPath, setSwingPath] = useState(0);
     const [barrelContact, setBarrelContact] = useState(0);
     const [notes, setNotes] = useState('');
+    const [selected, setSelected] = useState(false);
+
+    //selectors
+    const Hitting= ['Pull', 'Middle', 'Opposite', 'Line to Line'];
+    const [view, setView] = useState([]); //Hitting
+    const [anchorEl, setAnchorEl] = useState(null);
+
+    const handleClickView = (event) => {
+        setAnchorEl(event.currentTarget);  
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const handleChange = (event, nextView) => {
+        setView(nextView);
+    };
+
+    const open = Boolean(anchorEl);
+    const id_h = open ? 'selectable-options-popover' : undefined;
+
+///////////////////////////////////////
+    const Swings= ['Short', 'Quick', 'Long', 'Slow'];
+    const [operation, setOperation] = useState([]); // Swing Operation
+    const [anchorEl2, setAnchorEl2] = useState(null);
+
+    const handleClickSwings = (event) => {
+        setAnchorEl2(event.currentTarget);  
+    };
+
+    const handleClose2 = () => {
+            setAnchorEl2(null);
+    };
+
+    const handleOperation = (event, nextOperation) => {
+        setOperation(nextOperation);
+    };
+
+    const openSwings = Boolean(anchorEl2);
+    const id_sw = openSwings ? 'selectable-options-popover' : undefined;
+    /////////////////////////////
+    const Powers= ['Below', 'Average', 'Advanced', 'Elite'];
+    const [powers, setPowers] = useState([]); // Swing Operation
+    const [anchorEl3, setAnchorEl3] = useState(null);
+
+    const handleClickPower = (event) => {
+        setAnchorEl3(event.currentTarget);  
+    };
+
+    const handleClose3 = () => {
+            setAnchorEl3(null);
+    };
+
+    const handlePower = (event, nextPower) => {
+        setPowers(nextPower);
+    };
+
+    const openPower = Boolean(anchorEl3);
+    const id_p = openPower ? 'selectable-options-popover' : undefined;
+    //////////////////////////////////////////////////
+    const Barrels= ['Below', 'Average', 'Advanced', 'Elite'];
+    const [barrel, setBarrel] = useState([]); // Swing Operation
+    const [anchorEl4, setAnchorEl4] = useState(null);
+
+    const handleClickBarrel = (event) => {
+        setAnchorEl4(event.currentTarget);  
+    };
+
+    const handleClose4 = () => {
+            setAnchorEl4(null);
+    };
+
+    const handleBarrel = (event, nextBarrel) => {
+        setBarrel(nextBarrel);
+    };
+
+    const openBarrel = Boolean(anchorEl4);
+    const id_b = openBarrel ? 'selectable-options-popover' : undefined;
+    /////////////////////////////////////////////
+    const SwingPath= ['Smooth', 'Steep',];
+    const [path, setPath] = useState([]); // Swing Operation
+    const [anchorEl5, setAnchorEl5] = useState(null);
+
+    const handleClickPath = (event) => {
+        setAnchorEl5(event.currentTarget);  
+    };
+
+    const handleClose5 = () => {
+            setAnchorEl5(null);
+    };
+
+    const handlePath = (event, nextPath) => {
+        setPath(nextPath);
+    };
+
+    const openPath = Boolean(anchorEl5);
+    const id_ph = openPath ? 'selectable-options-popover' : undefined;
+    /////////////////////////////////////////////////////
 
     const addHitting = () => {
 
@@ -307,20 +410,42 @@ const HittingData = () => {
             <Box display='flex' aligndivs='center' marginBottom='2rem'>
                 <Grid container spacing={2} justifyContent={'center'} paddingX='1rem' paddingY='1rem' >
                     <Grid item xs={9}>
-                    <Paper sx={{p: 1}} style={{ background: "-webkit-linear-gradient(45deg, #000 30%, #60696b 90%)",}}>
-                    <Typography
-                        variant='h5'
-
+                    <Button
+                        onClick={handleClickView}
+                        size='large'
+                        style={{ background: "-webkit-linear-gradient(45deg, #000 30%, #60696b 90%)",}} 
                         sx={{
-                            color: 'white',
-                            fontFamily: 'Oswald, sans-serif',
-                            letterSpacing: '.5px',
-                            fontWeight: 300
+                            width: '100%',
+                            padding: 1
+                        }}>
+                            <Typography display='flex' alignItems='center' variant='h5' sx={{ color: 'white', letterSpacing: '.5px', fontFamily: 'Oswald, sans-serif', fontWeight:'300'}}>Hitting: {view.map((Hit) => (
+                               <Box sx={{ border: 1, ml:1, borderRadius: '6px', p:.2 }}><Typography display='flex' alignItems='center' sx={{mx:1, fontSize: '18px'}} key={Hit} variant='P1'>{Hit}</Typography></Box>
+                            ))}</Typography>
+                    </Button>
+                    <Popover
+                        id={id_h}
+                        open={open}
+                        anchorEl={anchorEl}
+                        onClose={handleClose}
+                        anchorOrigin={{
+                            vertical:'bottom',
+                            horizontal: 'center'
+                        }}
+                        transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'center',
                         }}
                     >
-                        Hitting:
-                    </Typography>
-                    </Paper>
+                        {Hitting.map((Hit) => (
+                            <>
+                            <ToggleButtonGroup width='100%' orientation="vertical" value={view} onChange={handleChange}>
+                            <ToggleButton sx={{ mx: 1, border: 0}} key={Hit} value={Hit}>
+                                {Hit}
+                            </ToggleButton>
+                            </ToggleButtonGroup>
+                            </>
+                        ))}
+                    </Popover>
                     </Grid>
                     <Grid item xs={3}>
                     <Grid container justifyContent={'center'}>
@@ -344,20 +469,42 @@ const HittingData = () => {
 
                 </Grid>
                 <Grid item xs={9}>
-                    <Paper sx={{p: 1}} style={{ background: "-webkit-linear-gradient(45deg, #000 30%, #60696b 90%)",}}>
-                    <Typography
-                        variant='h5'
-
+                <Button
+                        onClick={handleClickSwings}
+                        size='large'
+                        style={{ background: "-webkit-linear-gradient(45deg, #000 30%, #60696b 90%)",}} 
                         sx={{
-                            color: 'white',
-                            fontFamily: 'Oswald, sans-serif',
-                            letterSpacing: '.5px',
-                            fontWeight: 300
+                            width: '100%',
+                            padding: 1
+                        }}>
+                            <Typography display='flex' alignItems='center' variant='h5' sx={{ color: 'white', letterSpacing: '.5px', fontFamily: 'Oswald, sans-serif', fontWeight:'300'}}>Swing Operation: {operation.map((Swing) => (
+                               <Box sx={{ border: 1, ml:1, borderRadius: '6px', p:.2 }}><Typography display='flex' alignItems='center' sx={{mx:1, fontSize: '18px'}} key={Swing} variant='P1'>{Swing}</Typography></Box>
+                            ))}</Typography>
+                    </Button>
+                    <Popover
+                        id={id_sw}
+                        open={openSwings}
+                        anchorEl={anchorEl2}
+                        onClose={handleClose2}
+                        anchorOrigin={{
+                            vertical:'bottom',
+                            horizontal: 'center'
+                        }}
+                        transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'center',
                         }}
                     >
-                        Swing Operation:
-                    </Typography>
-                    </Paper>
+                        {Swings.map((Swing) => (
+                            <>
+                            <ToggleButtonGroup width='100%' orientation="vertical" value={operation} onChange={handleOperation}>
+                            <ToggleButton sx={{ mx: 1, border: 0}} key={Swing} value={Swing}>
+                                {Swing}
+                            </ToggleButton>
+                            </ToggleButtonGroup>
+                            </>
+                        ))}
+                    </Popover>
                 </Grid>
                 <Grid item xs={3}>
                     <Grid container justifyContent={'center'}>
@@ -381,20 +528,42 @@ const HittingData = () => {
 
                 </Grid>
                 <Grid item xs={9}>
-                    <Paper sx={{p: 1}} style={{ background: "-webkit-linear-gradient(45deg, #000 30%, #60696b 90%)",}}>
-                    <Typography
-                        variant='h5'
-
+                <Button
+                        onClick={handleClickPower}
+                        size='large'
+                        style={{ background: "-webkit-linear-gradient(45deg, #000 30%, #60696b 90%)",}} 
                         sx={{
-                            color: 'white',
-                            fontFamily: 'Oswald, sans-serif',
-                            letterSpacing: '.5px',
-                            fontWeight: 300
+                            width: '100%',
+                            padding: 1
+                        }}>
+                            <Typography display='flex' alignItems='center' variant='h5' sx={{ color: 'white', letterSpacing: '.5px', fontFamily: 'Oswald, sans-serif', fontWeight:'300'}}>Power: {powers.map((Power) => (
+                               <Box sx={{ border: 1, ml:1, borderRadius: '6px', p:.2 }}><Typography display='flex' alignItems='center' sx={{mx:1, fontSize: '18px'}} key={Power} variant='P1'>{Power}</Typography></Box>
+                            ))}</Typography>
+                    </Button>
+                    <Popover
+                        id={id_p}
+                        open={openPower}
+                        anchorEl={anchorEl3}
+                        onClose={handleClose3}
+                        anchorOrigin={{
+                            vertical:'bottom',
+                            horizontal: 'center'
+                        }}
+                        transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'center',
                         }}
                     >
-                        Power:
-                    </Typography>
-                    </Paper>
+                        {Powers.map((Power) => (
+                            <>
+                            <ToggleButtonGroup width='100%' orientation="vertical" value={powers} onChange={handlePower}>
+                            <ToggleButton sx={{ mx: 1, border: 0}} key={Power} value={Power}>
+                                {Power}
+                            </ToggleButton>
+                            </ToggleButtonGroup>
+                            </>
+                        ))}
+                    </Popover>
                 </Grid>
                 <Grid item xs={3}>
                     <Grid container justifyContent={'center'}>
@@ -418,20 +587,42 @@ const HittingData = () => {
 
                 </Grid>
                 <Grid item xs={9}>
-                    <Paper sx={{p: 1}} style={{ background: "-webkit-linear-gradient(45deg, #000 30%, #60696b 90%)",}}>
-                    <Typography
-                        variant='h5'
-
+                <Button
+                        onClick={handleClickPath}
+                        size='large'
+                        style={{ background: "-webkit-linear-gradient(45deg, #000 30%, #60696b 90%)",}} 
                         sx={{
-                            color: 'white',
-                            fontFamily: 'Oswald, sans-serif',
-                            letterSpacing: '.5px',
-                            fontWeight: 300
+                            width: '100%',
+                            padding: 1
+                        }}>
+                            <Typography display='flex' alignItems='center' variant='h5' sx={{ color: 'white', letterSpacing: '.5px', fontFamily: 'Oswald, sans-serif', fontWeight:'300'}}> Swing Path: {path.map((Path) => (
+                               <Box sx={{ border: 1, ml:1, borderRadius: '6px', p:.2 }}><Typography display='flex' alignItems='center' sx={{mx:1, fontSize: '18px'}} key={Path} variant='P1'>{Path}</Typography></Box>
+                            ))}</Typography>
+                    </Button>
+                    <Popover
+                        id={id_ph}
+                        open={openPath}
+                        anchorEl={anchorEl5}
+                        onClose={handleClose5}
+                        anchorOrigin={{
+                            vertical:'bottom',
+                            horizontal: 'center'
+                        }}
+                        transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'center',
                         }}
                     >
-                        Swing Path:
-                    </Typography>
-                    </Paper>
+                        {SwingPath.map((Path) => (
+                            <>
+                            <ToggleButtonGroup width='100%' orientation="vertical" value={path} onChange={handlePath}>
+                            <ToggleButton sx={{ mx: 1, border: 0}} key={Path} value={Path}>
+                                {Path}
+                            </ToggleButton>
+                            </ToggleButtonGroup>
+                            </>
+                        ))}
+                    </Popover>
                 </Grid>
                 <Grid item xs={3}>
                     <Grid container justifyContent={'center'}>
@@ -455,20 +646,42 @@ const HittingData = () => {
 
                 </Grid>
                 <Grid item xs={9}>
-                    <Paper sx={{p: 1}} style={{ background: "-webkit-linear-gradient(45deg, #000 30%, #60696b 90%)",}}>
-                    <Typography
-                        variant='h5'
-
+                <Button
+                        onClick={handleClickBarrel}
+                        size='large'
+                        style={{ background: "-webkit-linear-gradient(45deg, #000 30%, #60696b 90%)",}} 
                         sx={{
-                            color: 'white',
-                            fontFamily: 'Oswald, sans-serif',
-                            letterSpacing: '.5px',
-                            fontWeight: 300
+                            width: '100%',
+                            padding: 1
+                        }}>
+                            <Typography display='flex' alignItems='center' variant='h5' sx={{ color: 'white', letterSpacing: '.5px', fontFamily: 'Oswald, sans-serif', fontWeight:'300'}}> Barrel/Contact: {barrel.map((Barrel) => (
+                               <Box sx={{ border: 1, ml:1, borderRadius: '6px', p:.2 }}><Typography display='flex' alignItems='center' sx={{mx:1, fontSize: '18px'}} key={Barrel} variant='P1'>{Barrel}</Typography></Box>
+                            ))}</Typography>
+                    </Button>
+                    <Popover
+                        id={id_b}
+                        open={openBarrel}
+                        anchorEl={anchorEl4}
+                        onClose={handleClose4}
+                        anchorOrigin={{
+                            vertical:'bottom',
+                            horizontal: 'center'
+                        }}
+                        transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'center',
                         }}
                     >
-                        Barrel Contact:
-                    </Typography>
-                    </Paper>
+                        {Barrels.map((Barrel) => (
+                            <>
+                            <ToggleButtonGroup width='100%' orientation="vertical" value={barrel} onChange={handleBarrel}>
+                            <ToggleButton sx={{ mx: 1, border: 0}} key={Barrel} value={Barrel}>
+                                {Barrel}
+                            </ToggleButton>
+                            </ToggleButtonGroup>
+                            </>
+                        ))}
+                    </Popover>
                 </Grid>
                 <Grid item xs={3}>
                     <Grid container justifyContent={'center'}>
@@ -539,4 +752,4 @@ const HittingData = () => {
     )
 }
 
-export default HittingData
+export default HittingData;
