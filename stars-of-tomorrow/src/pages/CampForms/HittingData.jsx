@@ -746,7 +746,9 @@ const HittingData = () => {
                     </Box>
 
                 </Grid>
-
+                <Box display='flex' justifyContent='center'>
+                    <Button variant='contained' sx={{mt: 1.5, backgroundColor:'yellow', color: 'black', fontFamily: 'Oswald, sans-serif',}}>Save</Button>
+                </Box>
         </Container>
 
     )
